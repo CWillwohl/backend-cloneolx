@@ -1,8 +1,13 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
+
+const AuthController = require('./controllers/AuthController');
 
 router.get('/ping', (req, res) => {
-    res.json({ pong: true})
-})
+    res.json({ pong: true});
+});
 
-module.exports = router
+router.post('/user/signin', AuthController.signin);
+router.post('/user/signup', AuthController.signup);
+
+module.exports = router;
